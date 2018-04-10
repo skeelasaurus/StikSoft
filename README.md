@@ -17,9 +17,11 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//use wasd or arrow keys to move
 		movement = Input.GetAxis ("Horizontal");
 		if (movement > 0f) {
 			rigidBody.velocity = new Vector2 (movement * speed, rigidBody.velocity.y);
+		//So ball can roll downhill
 		else if (movement < 0f) {
 			rigidBody.velocity = new Vector2 (movement * speed, rigidBody.velocity.y);
 		}
