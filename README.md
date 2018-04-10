@@ -1,12 +1,11 @@
 # StikSoft
+//Shows just text
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinScript : MonoBehaviour {
-
-	public int score = 0;
+public class ShowText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +16,11 @@ public class CoinScript : MonoBehaviour {
 	void Update () {
 		
 	}
-
-	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("Triggered");
-		Destroy (gameObject);
-		score = score + 1;
-		Debug.Log ("Score: " + score);
+	//type text inbetween " " 
+	//x1, y1 is the top left x2,y2 is the bottom right
+	// 
+	void OnGUI(){
+		GUI.Label(new Rect (x1, y1, x2, y2), "Yeet");
 	}
 }
+
