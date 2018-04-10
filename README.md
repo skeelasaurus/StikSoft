@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour {
 		movement = Input.GetAxis ("Horizontal");
 		if (movement > 0f) {
 			rigidBody.velocity = new Vector2 (movement * speed, rigidBody.velocity.y);
-		}
 		else if (movement < 0f) {
 			rigidBody.velocity = new Vector2 (movement * speed, rigidBody.velocity.y);
 		}
