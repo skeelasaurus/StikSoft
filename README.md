@@ -1,14 +1,23 @@
-# StikSoft
-//Shows just text
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShowText : MonoBehaviour {
+public class Dialogue : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	
+    
+
+    public void OnGUI()
+    {
+        string[] choice = { "yeet", "skeet", "noodle" };
+        GUI.Label(new Rect(100, 100, 100, 100), choice[1]);
+    }
+
+
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,11 +25,4 @@ public class ShowText : MonoBehaviour {
 	void Update () {
 		
 	}
-	//type text inbetween " " 
-	//x1, y1 is the top left x2,y2 is the bottom right
-	// 
-	void OnGUI(){
-		GUI.Label(new Rect (x1, y1, x2, y2), "Yeet");
-	}
 }
-
