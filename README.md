@@ -4,49 +4,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// is fall detector and respawning player thing
-public class PlayerController : MonoBehaviour {
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-	public float speed = 5f;
-	public float jumpSpeed = 5f;
-	private float movement = 0f;
-	private Rigidbody2D rigidBody;
-	public Transform groundCheckPoint;
-	public float groundCheckRadius;
-	public LayerMask groundLayer;
-	private bool isTouchingGround;
-	public Vector3 respawnPoint;
-
+public class LevelManager : MonoBehaviour {
+	public float respawnDelay;
+	public PlayerController gamePlayer;
+	public int coins;
+	 
 	// Use this for initialization
 	void Start () {
-		rigidBody = GetComponent<Rigidbody2D> ();
-		respawnPoint = transform.position;
-	}
+		gamePlayer = FindObjectOfType<PlayerController> ();
 
+	}
+	
 	// Update is called once per frame
 	void Update () {
-		//to check if the ground check radius is touching the ground layer 
-		isTouchingGround = Physics2D.OverlapCircle (groundCheckPoint.position, groundCheckRadius, groundLayer);
-		movement = Input.GetAxis ("Horizontal");
-		if (movement > 0f) {
-			rigidBody.velocity = new Vector2 (movement * speed, rigidBody.velocity.y);
-		}
-		else if (movement < 0f) {
-			rigidBody.velocity = new Vector2 (movement * speed, rigidBody.velocity.y);
-		}
+		
+	} 
 
-		if(Input.GetButtonDown ("Jump") && isTouchingGround) {
-			rigidBody.velocity = new Vector2(rigidBody.velocity.x,jumpSpeed);
-		}
+	public void Respawn() {
+		gamePlayer.gameObject.SetActive (false);
+		gamePlayer.transform.position = gamePlayer.respawnPoint;
+		gamePlayer.gameObject.SetActive (true);
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag == "FallDetector") {
-			// what will happen when player enters the FallDetector zone
-			transform.position = respawnPoint;
-		}
-		if (other.tag == "Checkpoint") {
-			respawnPoint = other.transform.position;
-		}
+	public void AddCoins(int numberOfCoins){
+		
 	}
 }
