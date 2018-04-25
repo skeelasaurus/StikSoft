@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// is fall detector and respawning player thing
 public class PlayerController : MonoBehaviour {
 
 	public float speed = 5f;
