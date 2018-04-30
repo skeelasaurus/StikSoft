@@ -1,35 +1,31 @@
 # StikSoft
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour {
-	public float respawnDelay;
-	public PlayerController gamePlayer;
-	public int coins;
-	public Text coinText;
-	 
+public class RandomSpawn : MonoBehaviour {
+
+	public GameObject fallingObjct;
+	float randX;
+	float randY;
+	Vector2 whereToSpawn;
+	public float spawnRate = 2f;
+	float nextSpawn = 0.0f;
+
 	// Use this for initialization
 	void Start () {
-		gamePlayer = FindObjectOfType<PlayerController> ();
-		coinText.text = "Score: " + coins;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	} 
 
-	public void Respawn() {
-		gamePlayer.gameObject.SetActive (false);
-		gamePlayer.transform.position = gamePlayer.respawnPoint;
-		gamePlayer.gameObject.SetActive (true);
-	}
-
-	public void AddCoins(int numberOfCoins){
-		coins += numberOfCoins;
-		coinText.text = "Score: " + coins;
+		if (Time.time > nextSpawn){
+			nextSpawn = Time.time + spawnRate;
+			randX = Random.Range (-8.4f,8.4f);
+			randY = Random.Range (8f, 6f);
+			whereToSpawn = new Vector2 (randX, randY);
+			Instantiate (fallingObjct, whereToSpawn,Quaternion.identity);
+		}
 	}
 }
