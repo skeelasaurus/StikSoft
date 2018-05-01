@@ -3,29 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSpawn : MonoBehaviour {
+public class respawn : MonoBehaviour
+{
 
-	public GameObject fallingObjct;
-	float randX;
-	float randY;
-	Vector2 whereToSpawn;
-	public float spawnRate = 2f;
-	float nextSpawn = 0.0f;
+    public GameObject fallingObjct;
+    float randX;
+    float randY;
+    Vector2 whereToSpawn;
+    public float spawnRate = 2f;
+    float nextSpawn = 0.0f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
 
-		if (Time.time > nextSpawn){
-			nextSpawn = Time.time + spawnRate;
-			randX = Random.Range (-8.4f,8.4f);
-			randY = Random.Range (8f, 6f);
-			whereToSpawn = new Vector2 (randX, randY);
-			Instantiate (fallingObjct, whereToSpawn,Quaternion.identity);
-		}
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+    IEnumerator RandomSpawner() { 
+    yield return new WaitForSeconds(10);
+        if (Time.time > nextSpawn)
+        {
+            nextSpawn = Time.time + spawnRate;
+            randX = Random.Range(-8.4f, 8.4f);
+            randY = Random.Range(8f, 6f);
+            whereToSpawn = new Vector2(randX, randY);
+    Instantiate(fallingObjct, whereToSpawn, Quaternion.identity);
+}
+    }
 }
