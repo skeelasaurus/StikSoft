@@ -6,7 +6,7 @@ using UnityEngine;
 public class respawn : MonoBehaviour
 {
 
-    public GameObject fallingObjct;
+    public GameObject fallingObject;
     float randX;
     float randY;
     Vector2 whereToSpawn;
@@ -28,10 +28,10 @@ public class respawn : MonoBehaviour
             randX = Random.Range(-8.4f, 8.4f);
             randY = Random.Range(4f, 5f);
             whereToSpawn = new Vector2(randX, randY);
-            Instantiate(fallingObjct, whereToSpawn, Quaternion.identity);
+            Instantiate(fallingObject, whereToSpawn, Quaternion.identity);
         }
     }
 }
 
 
-  
+   
