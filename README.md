@@ -1,27 +1,21 @@
 # StikSoft
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinScript : MonoBehaviour {
-	private LevelManager gameLevelManager;
-	public int coinValue;
+public class objectDestroy : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		gameLevelManager = FindObjectOfType<LevelManager> ();
-	}
 
-	// Update is called once per frame
-	void Update () { 
+    // Use this for initialization
+    void Start()
+    {
 
-	}
+    }
 
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag == "Ground") {
-			gameLevelManager.AddCoins (coinValue);
-			Destroy (gameObject);
-		}
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        Destroy(gameObject, 2f);
+    }
 }
