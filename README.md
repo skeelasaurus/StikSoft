@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour {
 	public PlayerController gamePlayer;
 	public int coins;
 	public Text coinText;
+	public int score = 0;
 	 
 	// Use this for initialization
 	void Start () {
